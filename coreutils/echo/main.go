@@ -13,16 +13,16 @@ func main() {
 	i := 1
 	if n {
 		i++
-		for ; i < len(os.Args); i++ {
-			if os.Args[i] != "\n" {
-				break
-			}
-		}
 	}
-	for ; i < len(os.Args); i++ {
-		fmt.Print(os.Args[i])
+	for i, arg := range os.Args {
+		if i == 0 || (i == 1 && n) {
+			continue
+		}
+		fmt.Print(arg)
 		if i == len(os.Args)-1 {
-			fmt.Println()
+			if !n {
+				fmt.Println()
+			}
 		} else {
 			fmt.Print(" ")
 		}

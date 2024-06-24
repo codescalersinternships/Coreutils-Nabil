@@ -20,7 +20,8 @@ func main() {
 		os.Exit(1)
 	}
 	var filepath string = os.Args[len(os.Args)-1]
-	n := flag.Int("n", 10, "number of lines")
+	var n int
+	flag.IntVar(&n, "n", 10, "number of lines")
 	flag.Parse()
 	file, err := os.Open(filepath)
 	checkFile(err)
@@ -30,10 +31,10 @@ func main() {
 	for in.Scan() {
 		lines = append(lines, in.Text())
 	}
-	if (*n) > len(lines) {
+	if (n) > len(lines) {
 		panic("Lines Aren't enough")
 	}
-	for i := len(lines) - (*n); i < len(lines); i++ {
+	for i := len(lines) - (n); i < len(lines); i++ {
 		fmt.Println(lines[i])
 	}
 

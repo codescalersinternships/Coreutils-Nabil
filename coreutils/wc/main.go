@@ -16,9 +16,11 @@ func checkFile(e error) {
 }
 
 func main() {
-	l := flag.Bool("l", false, "Print Number of lines")
-	w := flag.Bool("w", false, "Print Number of words")
-	c := flag.Bool("c", false, "Print Number of characters")
+	var l, w, c bool
+
+	flag.BoolVar(&l, "l", false, "Print Number of lines")
+	flag.BoolVar(&w, "w", false, "Print Number of words")
+	flag.BoolVar(&c, "c", false, "Print Number of characters")
 	flag.Parse()
 	if len(os.Args) == 0 {
 		fmt.Println("No file passed")
@@ -38,13 +40,13 @@ func main() {
 		words := strings.Split(in.Text(), " ")
 		wordCount += len(words)
 	}
-	if *l {
+	if l {
 		fmt.Println(lineCount)
 	}
-	if *w {
+	if w {
 		fmt.Println(wordCount)
 	}
-	if *c {
+	if c {
 		fmt.Println(charactersCount)
 	}
 
