@@ -44,7 +44,7 @@ go run ./echo -n=true hello
 
 The `tree` command in Go recursively lists contents of directories in a tree-like format.
 ```bash
-go run ./tree ./
+go run ./tree -l=2 ./
 ```
 
 ### 7. env
