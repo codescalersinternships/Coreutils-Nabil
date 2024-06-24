@@ -11,6 +11,7 @@ import (
 func checkFile(e error) {
 	if e != nil {
 		fmt.Printf("Incorrect file path or file does not exist %e", e)
+		os.Exit(1)
 	}
 }
 
@@ -23,8 +24,8 @@ func main() {
 		fmt.Println("No file passed")
 		os.Exit(1)
 	}
-	var filepath string = os.Args[len(os.Args)-1]
-	file, err := os.Open(filepath)
+	var filePath string = os.Args[len(os.Args)-1]
+	file, err := os.Open(filePath)
 	checkFile(err)
 	defer file.Close()
 	in := bufio.NewScanner(file)

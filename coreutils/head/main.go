@@ -10,6 +10,7 @@ import (
 func checkFile(e error) {
 	if e != nil {
 		fmt.Printf("Incorrect file path or file does not exist %e", e)
+		os.Exit(1)
 	}
 }
 func main() {
