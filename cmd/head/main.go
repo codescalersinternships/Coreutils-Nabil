@@ -4,21 +4,21 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 )
 
 func checkFile(e error) {
 	if e != nil {
-		fmt.Printf("Incorrect file path or file does not exist %e", e)
-		os.Exit(1)
+		log.Fatal("Incorrect file path or file does not exist ", e)
 	}
 }
 func main() {
 	var n int
 	flag.IntVar(&n, "n", 10, "number of lines")
 	flag.Parse()
-	if len(os.Args) == 0 {
-		fmt.Println("No file passed")
+	if len(os.Args) <= 1 {
+		log.Fatal("No file passed")
 		os.Exit(1)
 	}
 	var filepath string = os.Args[len(os.Args)-1]
@@ -35,7 +35,7 @@ func main() {
 		}
 	}
 	if cnt != n {
-		fmt.Println("Lines weren't enough")
+		log.Fatal("Lines weren't enough")
 	}
 
 }
