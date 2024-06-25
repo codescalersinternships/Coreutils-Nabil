@@ -11,6 +11,6 @@ func main() {
 		idx := strings.Index(e, "=")
 		key := e[:idx]
 		value := e[idx+1:]
-		fmt.Println(key, ":", value)
+		fmt.Println(key, "=", value)
 	}
 }
