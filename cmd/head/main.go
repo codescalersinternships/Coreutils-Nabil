@@ -8,14 +8,14 @@ import (
 	"os"
 )
 
-func checkFile(e error) {
+func checkFileError(e error) {
 	if e != nil {
 		log.Fatal("Incorrect file path or file does not exist ", e)
 	}
 }
 func main() {
-	var n int
-	flag.IntVar(&n, "n", 10, "number of lines")
+	var numberOfLines int
+	flag.IntVar(&numberOfLines, "n", 10, "number of lines")
 	flag.Parse()
 	if len(os.Args) <= 1 {
 		log.Fatal("No file passed")
@@ -23,18 +23,18 @@ func main() {
 	}
 	var filepath string = os.Args[len(os.Args)-1]
 	file, err := os.Open(filepath)
-	checkFile(err)
+	checkFileError(err)
 	defer file.Close()
 	in := bufio.NewScanner(file)
 	var cnt int = 0
 	for in.Scan() {
 		fmt.Println(in.Text())
 		cnt++
-		if cnt == (n) {
+		if cnt == (numberOfLines) {
 			break
 		}
 	}
-	if cnt != n {
+	if cnt != numberOfLines {
 		log.Fatal("Lines weren't enough")
 	}
 

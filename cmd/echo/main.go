@@ -8,19 +8,19 @@ import (
 )
 
 func main() {
-	var n bool
-	flag.BoolVar(&n, "n", false, "omit trailing newlines")
+	var omitNewline bool
+	flag.BoolVar(&omitNewline, "n", false, "omit trailing newlines")
 	flag.Parse()
 	startIndex := 1
 
-	if n {
+	if omitNewline {
 		startIndex = 2
 	}
 
 	args := os.Args[startIndex:]
 	output := strings.Join(args, " ")
 
-	if n {
+	if omitNewline {
 		fmt.Print(output)
 	} else {
 		fmt.Println(output)

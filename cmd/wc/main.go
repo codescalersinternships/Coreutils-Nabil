@@ -9,25 +9,25 @@ import (
 	"strings"
 )
 
-func checkFile(e error) {
+func checkFileError(e error) {
 	if e != nil {
 		log.Fatal("Incorrect file path or file does not exist ", e)
 	}
 }
 
 func main() {
-	var l, w, c bool
+	var printLineCount, printWordCount, printCharactersCount bool
 
-	flag.BoolVar(&l, "l", false, "Print Number of lines")
-	flag.BoolVar(&w, "w", false, "Print Number of words")
-	flag.BoolVar(&c, "c", false, "Print Number of characters")
+	flag.BoolVar(&printLineCount, "l", false, "Print Number of lines")
+	flag.BoolVar(&printWordCount, "w", false, "Print Number of words")
+	flag.BoolVar(&printCharactersCount, "c", false, "Print Number of characters")
 	flag.Parse()
 	if len(os.Args) == 0 {
 		log.Fatal("No file passed")
 	}
 	var filePath string = os.Args[len(os.Args)-1]
 	file, err := os.Open(filePath)
-	checkFile(err)
+	checkFileError(err)
 	defer file.Close()
 	in := bufio.NewScanner(file)
 	lineCount := 0
@@ -39,13 +39,13 @@ func main() {
 		words := strings.Split(in.Text(), " ")
 		wordCount += len(words)
 	}
-	if l {
+	if printLineCount {
 		fmt.Println(lineCount)
 	}
-	if w {
+	if printWordCount {
 		fmt.Println(wordCount)
 	}
-	if c {
+	if printCharactersCount {
 		fmt.Println(charactersCount)
 	}
 

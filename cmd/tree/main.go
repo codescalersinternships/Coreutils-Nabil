@@ -34,8 +34,8 @@ func tree(currLevel int, maxLevel int, dirPath string) {
 }
 
 func main() {
-	var l int
-	flag.IntVar(&l, "l", 2, "depth")
+	var depthLvl int
+	flag.IntVar(&depthLvl, "l", 2, "depth")
 	flag.Parse()
 	if len(os.Args) <= 1 {
 		log.Fatal("No file passed")
@@ -43,5 +43,5 @@ func main() {
 	}
 	var dirPath string = os.Args[len(os.Args)-1]
 
-	tree(1, l, dirPath)
+	tree(1, depthLvl, dirPath)
 }
