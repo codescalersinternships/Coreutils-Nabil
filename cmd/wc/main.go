@@ -40,13 +40,17 @@ func main() {
 		wordCount += len(words)
 	}
 	if printLineCount {
-		fmt.Println(lineCount)
+		fmt.Print(lineCount, " ")
 	}
 	if printWordCount {
-		fmt.Println(wordCount)
+		fmt.Print(wordCount, " ")
 	}
 	if printCharactersCount {
-		fmt.Println(charactersCount)
+		fmt.Print(charactersCount, " ")
 	}
+	if !printLineCount && !printWordCount && !printCharactersCount {
+		fmt.Printf("%d %d %d", lineCount, wordCount, charactersCount)
+	}
+	fmt.Println()
 
 }

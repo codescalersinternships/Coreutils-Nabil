@@ -34,8 +34,5 @@ func main() {
 			break
 		}
 	}
-	if cnt != numberOfLines {
-		log.Fatal("Lines weren't enough")
-	}
 
 }

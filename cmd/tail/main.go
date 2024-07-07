@@ -20,7 +20,6 @@ func main() {
 	flag.Parse()
 	if len(os.Args) <= 1 {
 		log.Fatal("No file passed")
-		os.Exit(1)
 	}
 	var filepath string = os.Args[len(os.Args)-1]
 	file, err := os.Open(filepath)
@@ -30,9 +29,6 @@ func main() {
 	var lines []string
 	for in.Scan() {
 		lines = append(lines, in.Text())
-	}
-	if (numberOfLines) > len(lines) {
-		log.Fatal("Lines Aren't enough")
 	}
 	for i := len(lines) - (numberOfLines); i < len(lines); i++ {
 		fmt.Println(lines[i])
