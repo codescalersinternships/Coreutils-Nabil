@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"math"
 	"os"
 )
 
@@ -30,7 +31,7 @@ func main() {
 	for in.Scan() {
 		lines = append(lines, in.Text())
 	}
-	for i := len(lines) - (numberOfLines); i < len(lines); i++ {
+	for i := int(math.Max(0, float64(len(lines)-(numberOfLines)))); i < len(lines); i++ {
 		fmt.Println(lines[i])
 	}
 
